@@ -1,6 +1,7 @@
 <h1>New List</h1>
 <%= simple_form_for @list do |f| %>
   <%= f.input :name, placeholder: "Name of your Playlist" %>
+  <%= f.input :description, placeholder: "What is your playlist about? (Min. 10, max 255 characters)" %>
   <%= f.input :photo, as: :file %>
   <%= f.submit %>
 <% end %>

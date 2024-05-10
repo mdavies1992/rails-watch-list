@@ -12,8 +12,8 @@ puts "clearing"
 List.destroy_all
 Movie.destroy_all
 puts "seeding"
-list = List.create!(name: "My First List")
-file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
+list = List.create!(name: "My First List", description: "This is the boilerplate list, anything goes.")
+file = URI.open("https://images.squarespace-cdn.com/content/v1/5c90fe2eaf468307c83acde2/0b0077d9-e016-46d2-9d16-bc3cbf36ecc7/TPXM0lLvzMDIkMqnu9cFZS3ie8rMMNIl1658435216.jpg")
 list.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 list.save
 

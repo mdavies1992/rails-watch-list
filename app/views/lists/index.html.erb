@@ -1,17 +1,27 @@
-<h1>Full Lists</h1>
-<h2>Playlists</h2>
-<ul>
-<% @lists.each do |list| %>
-  <li><%= link_to "#{list.name}", list_path(list) %></li>
-<% end %>
-</ul>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="container">
+    <h1>GroovyMovie</h1>
+    <p>"Create playlists, watch movies, make memories."</p>
+  </div>
+</div>
 
-<%= link_to "Create a new list", new_list_path, class: "btn btn-primary" %>
 <br>
 
-<h2>Movie library</h2>
-<ul>
-<% @movies.each do |movie| %>
-  <li><%= movie.title %></li>
-<% end %>
-</ul>
+<h1>All Playlists</h1>
+<div class="cards">
+  <% @lists.each do |list| %>
+      <div class="card-list" style="width: 18rem;">
+      <%= cl_image_tag list.photo.key, height: 100, width: 400, crop: :fill, class:"card-img-top" %>
+          <div class="card-body">
+            <h5 class="card-title"><%= list.name %></h5>
+            <p class="card-text"><strong><%= list.description %></strong></p>
+          </div>
+          <%= link_to "", list_path(list), class: "card-list-link" %>
+      </div>
+
+  <% end %>
+</div>
+
+<br>
+
+<%= link_to "Create a new list", new_list_path, class: "btn btn-primary" %>

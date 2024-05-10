@@ -6,6 +6,8 @@ class ListsController < ApplicationController
 
   def show
     @list = List.find(params[:id])
+    @comments = @list.comments
+    @comment = Comment.new
   end
 
   def create
@@ -26,6 +28,6 @@ class ListsController < ApplicationController
   private
 
   def list_params
-    params.require(:list).permit(:name, :photo)
+    params.require(:list).permit(:name, :description, :photo)
   end
 end
