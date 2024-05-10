@@ -1,15 +1,15 @@
 <h1><%= @list.name %></h1>
-<ul>
+<ol>
 <% @list.bookmarks.each do |bookmark| %>
   <li>
-  <%= bookmark.comment %>
+  <strong><%="#{Movie.find(bookmark.movie_id).title}"%></strong> - "<%="#{bookmark.comment}" %>"
   <%= link_to bookmark_path(bookmark),
     data: {turbo_method: :delete, turbo_confirm: "This action will delete this Bookmark. Are you sure?"} do %>
     <i class="fa-solid fa-trash"></i>
   <% end %>
   </li>
   <% end %>
-</ul>
+</ol>
 
 <h2>Comments:</h2>
 <div class="cards">
