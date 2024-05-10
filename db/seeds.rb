@@ -1,3 +1,4 @@
+require "open-uri"
 # This file should ensure the existence of records required to run the application in every environment (production,
 # development, test). The code here should be idempotent so that it can be executed at any point in every environment.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
@@ -8,10 +9,14 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 puts "clearing"
-Movie.destroy_all
 List.destroy_all
+Movie.destroy_all
 puts "seeding"
-List.create!(name: "My First List")
+list = List.create!(name: "My First List")
+file = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/NES-Console-Set.jpg/1200px-NES-Console-Set.jpg")
+list.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+list.save
+
 puts "list done"
 Movie.create!(title: "Wonder Woman 1984", overview: "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s", poster_url: "https://image.tmdb.org/t/p/original/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg", rating: 6.9)
 puts "WW made"
